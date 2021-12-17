@@ -123,7 +123,12 @@ class TuyaCommands:
         request = self.openapi.get(f"/v1.0/iot-03/devices/{self.DEVICE_ID}/status")
         return self._encontrar_code(request["result"], code)
 
-    def ligar_lampada(self):
+    def ligar_lampada(self) -> bool:
+        """Liga a lampada.
+
+        Returns:
+            bool: status da requisição.
+        """
         comand = self.comando(self.code.lampada, True)
         return self.enviar_tuya(comand)
 
@@ -141,10 +146,10 @@ class TuyaCommands:
         Muda a cor da lampada para a cor passada.
         OBS: primeiro você tem que ligar a lampada, essa função não liga.
         Args:
-            cor (str): cor da lampada que deseja mudar
+            cor (str): cor da lampada que deseja mudar.
 
         Returns:
-            bool: status da requisição
+            bool: status da requisição.
         """
         _cor = getattr(self.color, cor.upper())
         comando = self.comando(self.code.cor, _cor)
