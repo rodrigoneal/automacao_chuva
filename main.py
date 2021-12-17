@@ -21,6 +21,8 @@ def run():
     if intensidade_chuva != "black":
         tuya.ligar_lampada()
         tuya.mudar_cor(intensidade_chuva)
+        tuya.timer_lampada()
+        tuya.timer_lampada(10)
     else:
         tuya.desligar_lampada()
     print(elementos)

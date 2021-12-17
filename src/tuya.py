@@ -181,15 +181,16 @@ class TuyaCommands:
         return status["value"]
 
     def timer_lampada(self, timer: int) -> bool:
+        _timer = timer * 60
         """
         Timer que liga ou desliga a lampada dependendo do status dela.
-
+        Obs: O timer só aceita acima de 60 segundos, por isso faço o calculo para minutos.
         Args:
-            timer (int): Tempo em minutos do timer que vai ligar a lampada.
+            timer (int): Tempo em segundos do timer.
 
         Returns:
             bool: Boleano informado se a requisição foi aceita.
         """
 
-        comando = self.comando(self.code.contagem, timer)
+        comando = self.comando(self.code.contagem, _timer)
         return self.enviar_tuya(comando)
