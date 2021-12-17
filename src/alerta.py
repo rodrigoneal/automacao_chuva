@@ -21,6 +21,11 @@ bairros = [
 
 
 def pegar_clima() -> List[Elemento]:
+    """
+    Faz o crawler  no site do alerta rio e pega os dados do local e da chuva.
+    Returns:
+        List[Elemento]: List com os elementos.
+    """
     options = Options()
     options.headless = True
     service = Service(ChromeDriverManager().install())
