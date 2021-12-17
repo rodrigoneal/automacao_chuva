@@ -1,14 +1,15 @@
 from dataclasses import dataclass
 from typing import Any
 
+
 @dataclass
 class Elemento:
     local: str
     chuva: str
 
-    def change_value(self, value: str)-> float:
+    def change_value(self, value: str) -> float:
         try:
-            return float(value.replace(',', '.'))
+            return float(value.replace(",", "."))
         except ValueError:
             return 0.0
 
