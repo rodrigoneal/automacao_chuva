@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import Any, Dict, List
 
 from tuya_iot.openapi import TuyaOpenAPI
