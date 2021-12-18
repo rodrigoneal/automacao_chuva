@@ -1,11 +1,10 @@
-from typing import Callable
-
-
-from typing import Callable
 import time
+from typing import Callable
 
 
 import schedule
+
+from src.info import info_prox
 
 
 def agendar(tarefa: Callable) -> None:
@@ -14,6 +13,7 @@ def agendar(tarefa: Callable) -> None:
     Args:
         tarefa (Callable): Função que será chamada
     """
+    print(info_prox())
     schedule.every(15).minutes.do(tarefa)
 
     while True:

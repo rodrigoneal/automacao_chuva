@@ -28,6 +28,7 @@ def pegar_clima() -> List[Elemento]:
     """
     options = Options()
     options.headless = True
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
     driver.get("http://alertario.rio.rj.gov.br/tabela-de-dados/")
