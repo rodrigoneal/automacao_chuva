@@ -1,7 +1,12 @@
-﻿autopep8==1.6.0
-paho-mqtt==1.6.1
-pushbullet.py==0.12.0
+autopep8==1.6.0
+coverage==6.2
+mypy==0.920
+mypy-extensions==0.4.3
+pre-commit==2.16.0
+pytest-sugar==0.9.4
+python-dotenv==0.19.2
 schedule==1.1.0
 selenium==4.1.0
+six==1.16.0
 tuya-iot-py-sdk==0.6.3
 webdriver-manager==3.5.2
