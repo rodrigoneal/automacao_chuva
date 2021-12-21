@@ -36,3 +36,9 @@ def test_se_intensidade_retorna_blue(forca, valores):
     chuva = forca(valores)
     esperado = "blue"
     assert chuva == esperado
+
+
+def test_se_insensidade_retorna_black(forca):
+    chuva = forca(0)
+    esperado = "black"
+    assert chuva == esperado

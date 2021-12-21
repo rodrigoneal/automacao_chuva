@@ -42,6 +42,14 @@ def test_se_elemento_muda_chuva_str_para_float(retorna_elemento):
     assert isinstance(elemento.chuva, float)
 
 
-def test_se_elemento_muda_hora_para_datetime(retorna_elemento):
+def test_se_elemento_muda_hora_para_str(retorna_elemento):
     elemento = retorna_elemento
     assert isinstance(elemento.hora, str)
+
+
+def test_se_elemento_retorna_0_ponto_0_se_passar_um_valor_de_chuva_invalido(
+    retorna_elemento,
+):
+    elemento = Elemento("Irajá", "08:10", "None")
+    esperado = 0.0
+    assert elemento.chuva == esperado

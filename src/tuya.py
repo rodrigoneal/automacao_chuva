@@ -80,7 +80,7 @@ class TuyaCommands:
         openapi.connect(self.USERNAME, self.PASSWORD)
         return openapi
 
-    def _encontrar_code(self, results: List[Dict], code: str) -> Dict:
+    def _encontrar_code(self, results: List[Dict], code: str) -> Dict:  # type: ignore[return]
         """
         Filtra o result retornado somente o code que deseja pegar.
 
@@ -94,7 +94,6 @@ class TuyaCommands:
         for result in results:
             if result["code"] == code:
                 return result
-        return {"value": "Error"}
 
     def enviar_tuya(self, comando: Dict) -> bool:
         """
@@ -157,7 +156,7 @@ class TuyaCommands:
         return self.enviar_tuya(comando)
 
     @property
-    def cor_lampada(self) -> str:
+    def cor_lampada(self) -> str:  # type: ignore[return]
         """
         Property que retorna a da cor da lampada.
         Não mapeiei muitas cores(falta paciencia),
@@ -169,7 +168,6 @@ class TuyaCommands:
         for k, v in Color.__dict__.items():
             if v == valor_cor:
                 return k
-        return "Error"
 
     @property
     def status_lampada(self) -> bool:
