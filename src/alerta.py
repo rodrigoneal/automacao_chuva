@@ -28,7 +28,7 @@ def pegar_clima() -> List[Elemento]:
     """
     options = Options()
     options.headless = True
-    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    options.add_experimental_option("excludeSwitches", ["enable-logging"])
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
     driver.get("http://alertario.rio.rj.gov.br/tabela-de-dados/")
@@ -40,11 +40,12 @@ def pegar_clima() -> List[Elemento]:
     elementos = []
     for table in tables_rows:
         try:
+            hora = table.find_element(By.XPATH, ".//td[3]").text.strip()
             bairro = table.find_element(By.XPATH, ".//td[2]").text.strip()
             if bairro in bairros:
                 local = bairro
                 chuva = table.find_element(By.XPATH, ".//td[5]").text.strip()
-                elementos.append(Elemento(local, chuva))
+                elementos.append(Elemento(local, hora, chuva))
         except NoSuchElementException:
             pass
     return elementos

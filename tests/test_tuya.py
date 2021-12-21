@@ -8,8 +8,15 @@ from src.tuya import TuyaCommands
 
 @pytest.fixture
 def tuya_comando():
+
     config = dotenv_values(".env")
-    tuya = TuyaCommands(**config)
+    ACCESS_ID = config["ACCESS_ID"]
+    ACCESS_KEY = config["ACCESS_KEY"]
+    ENDPOINT = config["ENDPOINT"]
+    USERNAME = config["USERNAME"]
+    PASSWORD = config["PASSWORD"]
+    DEVICE_ID = config["DEVICE_ID"]
+    tuya = TuyaCommands(ACCESS_ID, ACCESS_KEY, ENDPOINT, USERNAME, PASSWORD, DEVICE_ID)
     yield tuya
     tuya.mudar_cor("WHITE")
     tuya.desligar_lampada()
@@ -59,7 +66,7 @@ def test_se_retorna_cor_lampada(tuya_comando):
     assert cor == esperado
 
 
-def test_se_lampada_desliga_em_5_segundos(tuya_comando):
+def test_se_lampada_desliga_em_60_segundos(tuya_comando):
     tuya = tuya_comando
     status_1 = tuya.status_lampada
     tuya.timer_lampada(60)
